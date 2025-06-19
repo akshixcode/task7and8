@@ -5,7 +5,7 @@ resource "aws_ecs_task_definition" "my_first_task" {
 [
   {
     "name": "my-first-task",
-    "image": "myfikcle/my-strapi-app:latest",
+    "image": "myfikcle/my-strapi-app",
     "essential": true,
     "portMappings": [
       {

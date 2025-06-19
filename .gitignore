@@ -1,0 +1,22 @@
+
+# Terraform state
+*.tfstate
+*.tfstate.*
+crash.log
+
+# .terraform directory
+.terraform/
+
+# Sensitive files
+*.tfvars
+*.tfvars.json
+
+# Local env files
+.env
+
+# Node modules (if using Node.js)
+node_modules/
+
+# OS files
+.DS_Store
+Thumbs.db

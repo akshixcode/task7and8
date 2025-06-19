@@ -49,6 +49,14 @@ resource "aws_ecs_task_definition" "strapi" {
           hostPort      = 1337
         }
       ]
+        logConfiguration = {
+        logDriver = "awslogs"
+        options = {
+          awslogs-group         = "/ecs/strapi"
+          awslogs-region        = "ap-south-1"
+          awslogs-stream-prefix = "ecs"
+    }
+        }
     }
   ])
 }
@@ -62,6 +70,10 @@ resource "aws_ecs_service" "strapi" {
   network_configuration {
     subnets          = ["subnet-06cb171643ef7801d"] # Replace with your public subnet IDs
     security_groups  = ["sg-0b0f5c366b5067842"]     # Replace with your security group ID
-    assign_public_ip = true
+    assign_public_ip = false
   }
+}
+resource "aws_cloudwatch_log_group" "strapi" {
+  name              = "/ecs/strapi"
+  retention_in_days = 7
 }
